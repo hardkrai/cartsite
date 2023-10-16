@@ -14,6 +14,9 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Fullscreen } from '@mui/icons-material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Typography } from '@mui/material';
+import Button from '@mui/material/Button';
+import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
 
 
 
@@ -40,10 +43,10 @@ const Header = () => {
     return (
 
         <>
-            <Navbar expand="lg" className="bg-body-tertiary">
+            <Navbar expand="lg" className="bg-body-tertiary navbar-light  navbar-expand-lg">
                 <Container>
 
-                    <Navbar.Brand href="/" className='text-decoration-none '><AutoModeRoundedIcon /> Animo</Navbar.Brand>
+                    <Navbar.Brand href="/" className='text-decoration-none '><AutoModeRoundedIcon /> RentaFlick</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
@@ -55,6 +58,7 @@ const Header = () => {
                                  <ShoppingBasketIcon onClick={handleClick} style={{
                                 marginBottom: "5px",
                                 marginLeft: "68rem"
+
                             }} />
                              </StyledBadge></NavLink>
 
@@ -62,9 +66,49 @@ const Header = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+            <Typography variant='h1' style={{
+                margin:"2rem",
+                
+                marginBottom: "3rem",
+                textAlign: "center"
+            }} >Rent
+           
+            a
+            Flick, <br/>Where Content Meets You</Typography>
 
+            <Typography variant='h4' style={{
+                margin:"2rem",
+               
+                marginBottom: "3rem",
+                textAlign: "center"
+            }} gutterBottom>Enter the gateway to your beginnings</Typography>
+           <div style={{
+            textAlign: "center",
+            marginBottom: "8rem",
 
-
+           }} > <Button variant="contained" size="large" onClick={handleClick} style={{
+            margin: "1rem",
+            backgroundColor: "black",
+            color: "white",
+            marginTop: "2rem",
+            marginBottom: "2rem",
+            height: "6rem",
+            borderRadius: "4rem",
+            
+            width:"10rem"
+           }} >
+         See Your Cart
+        </Button><br/>
+       
+        <Typography variant='h2' style={{
+                marginTop:"2rem",
+                marginLeft: "2rem",
+                
+                textAlign: "center"
+            }} >Check Out This Month's Featured</Typography>
+            <br/><ExpandCircleDownIcon/>
+        </div>
+           
 
 
 
@@ -77,22 +121,40 @@ const Header = () => {
                 open={open}
                 onClose={handleClose}
                 TransitionComponent={Fade}
+                style={{
+                    borderRadius: 15,
+                    left: "88rem"
+                }}
             >
                 
-                <MenuItem onClick={handleClose}>
+                <MenuItem
+                style={{
+                   
+                }} >
                     {
-                        cart.length===0? <div className="">
-                            CART EMPTY
+                        cart.length===0? <div className="" style={{
+                            textAlign: "center",
+                            
+                            
+                            
+                        }}>
+                           Your Cart Is Empty,<br/>
+                           But Not For Long,<br/>
+                           Rent A Flick Now!
                         </div>:
                         <div style={{
-                            width: "27rem",
+                            width: "26rem",
+                            
                             
                             
 
 
                         }}>
                         <div >
-                           <Table striped bordered hover>
+                           <Table striped bordered hover
+                           style={{
+                            left: "88rem"
+                           }}>
                             <tr>
                             <th>
                               <td>
@@ -119,6 +181,8 @@ const Header = () => {
                                 <td>
                                     <p> Movie Name: {movie.original_title}</p>
                                     <p> Movie Price: {movie.popularity}</p>
+                                    <p> Movie Language: {movie.original_Language}</p>
+                                    <p> Movie Rating: {movie.vote_average}</p>
                                    
                                     <div className="w-50 d-flex justify-content-between">
                                         <p>-</p>
@@ -127,7 +191,7 @@ const Header = () => {
                                     </div>
                                 </td>
                                 <td>
-                                    <DeleteIcon style={{
+                                    <DeleteIcon  style={{
                                         cursor: "pointer", color: "darkred", fontSize: "2rem"
                                     }}/>
                                 </td>

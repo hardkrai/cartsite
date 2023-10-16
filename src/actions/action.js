@@ -5,4 +5,10 @@ const add = (product)=>{
     }
 }
 
+export const remove = (product)=>{
+    return{
+        type: "REMOVE",
+        payload: product
+    }
+}
 export default add

@@ -11,8 +11,19 @@ const updateCart=(state=initialState, action)=>{
                 ...state,cart:[...state.cart, action.payload]
 
             }
+        
+
+        case "REMOVE":
+            
+                {state.cart = state.cart.filter(i => i.id !==action.payload.id)
+
+                return{
+                    ...state
+                }
+            }
         default:
             return state
+
     }
 }
 

@@ -18,10 +18,12 @@ import add from '../actions/action';
 
 
 
+
+
 const Product = () => {
 
-   
-    
+
+
     const dispatch = useDispatch()
 
     const [Data, setData] = useState([])
@@ -40,7 +42,7 @@ const Product = () => {
     }, []);
 
 
-    const send=(movie)=>{
+    const send = (movie) => {
 
         dispatch(add(movie))
 
@@ -48,81 +50,109 @@ const Product = () => {
 
     return (
         <div>
-            <div className="row">
+            <div className="background" style={{
+                background: "black",
+                margin: "auto",
+                marginLeft: "2rem",
+                marginRight: "2rem",
+                marginBottom: "2rem",
+                paddingBottom: "2rem",
+                borderRadius: 15,
+                zIndex: "-333"
+
+            }}>
+                <div className="row" style={{
 
 
 
-                {
-                    Data && Data.map(movie => (
-                     
-                        <li key={movie.id} style={{
-                            listStyle: "none",
-                            // display: "flex",
-                            // flexWrap: "wrap"
-                            width: 350,
-                            margin: "1rem"
-                        }}>
-                    <div className="" style={{
-                        marginLeft: "1.5em"
-                    }}>
-                        <Card sx={{ maxWidth: 300, maxHeight: 600, alignContent: "center", alignItems: "Center", margin: "auto", borderRadius: 10, borderColor: "black" }}>
-                            <CardHeader
-                                avatar={
-                                    <Avatar
-                                        sx={{ bgcolor: red[500], alignItems: "center", justifyContent: "center", marginLeft: "auto", maxWidth: 250, maxHeight: 150 }}
-                                        aria-label="movie "
-                                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-
-                                    />
+                    backdropFilter: "blur(5px)",
+                    zIndex: "333"
 
 
-                                }
 
-                                title={`${movie.title.substring(0, 28)}`}
-                                subheader={movie.release_date}
-                            />
-                            <CardMedia
-                            sx={{
-                                borderRadius: 10,
-                                marginTop: 1,
-                                width: 270,
-                                marginLeft:1.5
+                }}>
 
-                                
-                                
-                            }}
-                                component="img"
-                                height="250"
-                                
-                                image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                                alt={movie.original_title}
-                            />
-                            <CardContent>
-                                <Typography variant="body2" color="text.secondary">
-                                    {movie.overview.substring(0, 100)}...
-                                </Typography>
-                                <Typography variant="body" color="text.secondary" style={{
-                                    justifyContent: "center", marginLeft: "5rem"
+
+
+                    {
+                        Data && Data.map(movie => (
+
+                            <li key={movie.id} style={{
+                                listStyle: "none",
+                                // display: "flex",
+                                // flexWrap: "wrap"
+                                width: 350,
+                                margin: "auto",
+                                marginTop: "1rem",
+                                filter: "none"
+
+                            }}>
+                               
+                                <div className="" style={{
+                                    margin: "auto",
+                                    backdropFilter: "blur(3px)"
                                 }}>
-                                    <br/>
-                                    Price: {movie.popularity} INR<br/>
-                                    Rating: {movie.vote_average}<br />
-                                    Language: {movie.original_language}<br />
-                                    
-                                </Typography>
-                            </CardContent>
-                            <CardActions disableSpacing>
-                                <button onClick={()=> send(movie)} style={{
-                                    border: "none",
-                                    borderRadius: 50,
-                                    marginRight:3
+                                    <Card sx={{
+                                        maxWidth: 300, maxHeight: 600, alignContent: "center", alignItems: "Center", margin: "auto", borderRadius: 5, border: "5",
+                                        backdropFilter: "blur(3px)"
+                                    }}>
+                                        <CardHeader
+                                            avatar={
+                                                <Avatar
+                                                    sx={{ bgcolor: red[500], alignItems: "center", justifyContent: "center", marginLeft: "auto", maxWidth: 250, maxHeight: 150 }}
+                                                    aria-label="movie "
+                                                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
 
-                                }}>
-                                <IconButton aria-label="add to favorites">
-                                    <AddCircleIcon />
-                                </IconButton>
-                                </button>
-                                 <button
+                                                />
+
+
+                                            }
+
+                                            title={`${movie.title.substring(0, 28)}`}
+                                            subheader={movie.release_date}
+                                        />
+                                        <CardMedia
+                                            sx={{
+                                                borderRadius: 10,
+                                                marginTop: 1,
+                                                width: 270,
+                                                marginLeft: 1.5
+
+
+
+                                            }}
+                                            component="img"
+                                            height="250"
+
+                                            image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                            alt={movie.original_title}
+                                        />
+                                        <CardContent>
+                                            <Typography variant="body2" color="text.secondary">
+                                                {movie.overview.substring(0, 100)}...
+                                            </Typography>
+                                            <Typography variant="body" color="text.secondary" style={{
+                                                justifyContent: "center", marginLeft: "5rem"
+                                            }}>
+                                                <br />
+                                                Price: {movie.popularity} INR<br />
+                                                Rating: {movie.vote_average}<br />
+                                                Language: {movie.original_language}<br />
+
+                                            </Typography>
+                                        </CardContent>
+                                        <CardActions disableSpacing>
+                                            <button onClick={() => send(movie)} style={{
+                                                border: "none",
+                                                borderRadius: 50,
+                                                marginRight: 3
+
+                                            }}>
+                                                <IconButton aria-label="add to cart">
+                                                    <AddCircleIcon />
+                                                </IconButton>
+                                            </button>
+                                            {/* <button
                                  style={{
                                     border: "none",
                                     borderRadius: 30,
@@ -131,19 +161,19 @@ const Product = () => {
                                 }}><IconButton aria-label="share">
                                     <ShareIcon />
                                 </IconButton>
-                                </button>
-                            </CardActions>
+                                </button> */}
+                                        </CardActions>
 
-                        </Card>
-                        </div>
-                        </li>
+                                    </Card>
+                                </div>
+                            </li>
                         )
 
 
 
 
-                    )
-                }
+                        )
+                    }
 
 
 
@@ -151,6 +181,7 @@ const Product = () => {
 
 
 
+                </div>
             </div>
 
 
