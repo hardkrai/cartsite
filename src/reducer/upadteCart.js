@@ -1,30 +1,28 @@
-const initialState={
-    cart:[]
+const initialState = {
+    cart: []
 
 }
-const updateCart=(state=initialState, action)=>{
-    switch(action.type){
+
+
+const updateCart = (state = initialState, action) => {
+    console.log("Reducer Action:", action);
+
+    switch (action.type) {
         case "ADDTOCART":
-            
-            return{
-
-                ...state,cart:[...state.cart, action.payload]
-
-            }
-        
-
+            return {
+                ...state,
+                cart: [...state.cart, action.payload]
+            };
         case "REMOVE":
-            
-                {state.cart = state.cart.filter(i => i.id !==action.payload.id)
+            return {
+                ...state,
+                cart: state.cart.filter(item => item.id !== action.payload)
+            };
 
-                return{
-                    ...state
-                }
-            }
         default:
-            return state
-
+            return state;
     }
-}
+};
+
 
 export default updateCart

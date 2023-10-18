@@ -51,7 +51,7 @@ const Product = () => {
     return (
         <div>
             <div className="background" style={{
-                background: "black",
+                background: "lavender",
                 margin: "auto",
                 marginLeft: "2rem",
                 marginRight: "2rem",
@@ -83,7 +83,7 @@ const Product = () => {
                                 // flexWrap: "wrap"
                                 width: 350,
                                 margin: "auto",
-                                marginTop: "1rem",
+                                marginTop: "2rem",
                                 filter: "none"
 
                             }}>
@@ -142,7 +142,9 @@ const Product = () => {
                                             </Typography>
                                         </CardContent>
                                         <CardActions disableSpacing>
-                                            <button onClick={() => send(movie)} style={{
+                                            <button 
+                                            onClick={() => send(movie)} 
+                                            style={{
                                                 border: "none",
                                                 borderRadius: 50,
                                                 marginRight: 3
